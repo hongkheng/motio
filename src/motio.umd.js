@@ -1,10 +1,3 @@
-/*!
- * motio 2.2.2 - 8th Jun 2015
- * https://github.com/darsain/motio
- *
- * Licensed under the MIT license.
- * http://opensource.org/licenses/MIT
- */
 (function (root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module unless amdModuleId is set

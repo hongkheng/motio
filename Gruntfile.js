@@ -39,7 +39,7 @@ module.exports = function (grunt) {
 				banner: '<%= meta.banner %>'
 			},
 			vanilla: {
-				src: 'src/<%= pkg.name %>.js',
+				src: 'src/<%= pkg.name %>.umd.js',
 				dest: 'dist/<%= pkg.name %>.js'
 			},
 			jquery: {
@@ -48,13 +48,24 @@ module.exports = function (grunt) {
 			}
 		},
 
-		// Minify with Google Closure Compiler.
-		gcc: {
+		// umdified file
+		umd: {
+			all: {
+				options: {
+					src: 'src/<%= pkg.name %>.js',
+					dest: 'src/<%= pkg.name %>.umd.js',
+					objectToExport: 'Motio'
+				}
+			}
+		},
+
+		// Minify with Google Closure Compiler
+		closurecompiler: {
 			options: {
 				banner: '<%= meta.bannerLight %>'
 			},
 			vanilla: {
-				src: 'src/<%= pkg.name %>.js',
+				src: 'src/<%= pkg.name %>.umd.js',
 				dest: 'dist/<%= pkg.name %>.min.js'
 			},
 			jquery: {
@@ -83,13 +94,15 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks('grunt-contrib-clean');
 	grunt.loadNpmTasks('grunt-tagrelease');
 	grunt.loadNpmTasks('grunt-bumpup');
-	grunt.loadNpmTasks('grunt-gcc');
+	grunt.loadNpmTasks('grunt-closurecompiler');
+	grunt.loadNpmTasks('grunt-umd');
 
 	// Build task.
 	grunt.registerTask('build', function () {
 		grunt.task.run('clean');
+		grunt.task.run('umd:all');
 		grunt.task.run('concat');
-		grunt.task.run('gcc');
+		grunt.task.run('closurecompiler');
 	});
 
 	// Release task.

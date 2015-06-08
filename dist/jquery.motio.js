@@ -1,5 +1,5 @@
 /*!
- * motio 2.2.2 - 7th Aug 2014
+ * motio 2.2.2 - 8th Jun 2015
  * https://github.com/darsain/motio
  *
  * Licensed under the MIT license.
