@@ -1,6 +1,8 @@
 {
   "name": "motio",
   "version": "0.0.1",
+  "main": "src/motio.js",
+  "private": true,
   "devDependencies": {
     "grunt": "~0.4.2",
     "grunt-bumpup": "~0.4.2",
